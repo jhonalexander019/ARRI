@@ -1,0 +1,39 @@
+
+ul {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;  
+  list-style: none;
+}
+
+li{
+  margin: 0 3%;
+}
+
+a {
+  position: relative;
+  text-decoration: none;
+  color: black;
+  font-size: 1.2rem;
+  padding: 5px;
+
+}
+a::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(to right, #64a59a, #5db689, #5fb47c);
+  z-index: 1;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s ease-in-out;
+}
+ul a:hover::before {
+  transform: scaleX(1);
+}
+ul[data-animation="center"] a::before {
+  transform-origin: center;
+}

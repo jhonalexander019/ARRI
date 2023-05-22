@@ -1,0 +1,16 @@
+.footer{
+    display: flex;
+    height: 7vh;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #f4eade;
+    margin-top: 3%;
+    box-shadow: rgba(0, 0, 0, 0.15) 3.6px 3.6px 5.6px 3.6px;
+}
+
+img{
+    max-width: 20px;
+    max-height: 20px;
+    object-fit: cover;
+    margin-bottom: -3px;
+}
