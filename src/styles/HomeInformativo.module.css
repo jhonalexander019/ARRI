@@ -10,12 +10,12 @@ header {
   top: 10px;
   margin-bottom: 10px;
   background: rgb(247,233,217);
-  background: linear-gradient(0deg, rgba(247,233,217,1) 0%, rgba(116,255,113,0.6110819327731092) 100%);
-  /* box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px; */
+  background: linear-gradient(0deg, rgb(202, 253, 253) 0%, rgba(0, 101, 184, 0.611) 100%);
+  /* box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;  rgba(247,233,217,1)  f7e9d9 */
 }
 
 .principal {
-  background-color: #f7e9d9;
+  background-color: rgb(202, 253, 253);
 }
 
 .contenedor {
@@ -32,7 +32,7 @@ header {
   text-align: justify;
   border: 0.8px solid #80bdca;
   border-radius: 35px;
-  background-color: #a1d6e2;
+  background-color: #b2e3ee;
   transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 

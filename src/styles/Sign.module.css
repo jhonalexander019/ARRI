@@ -3,13 +3,16 @@
     height: 91.5vh;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
 .card{
     height: 380px;
     width: 900px;
-    background-color: #565c66;
-    display: grid;
+    /* background-color: #565c66; */
+    background-color: rgba(150, 208, 255, 0.611);
+    box-shadow: 0px 0px 25px 11px rgba(0,0,0,0.1);
+        display: grid;
     grid-template-columns: repeat(2, 1fr);
     align-items: center;
     justify-items: center;
@@ -19,9 +22,10 @@
 .form{
     height: 460px;
     width: 350px;
-    background-color: #f0e8e8;
-    top: -55px;
+    background-color: #d9edfd;
+    top: -40px;
     position: relative;
+    border: #d5e2f8 solid 2px;
     border-radius: 35px;
     display: flex;
     flex-direction: column;
@@ -40,7 +44,37 @@
 }
 
 .form > input:focus-visible{
-    border: #8e9094 solid 1px;
+    border: #9da0a7 solid 1px;
     outline-width: 0;
     box-shadow: 0px 4px 52px -8px rgba(0,0,0,0.1);
+}
+
+.form > h1{
+    font-size: 350%;
+}
+
+.Bregistro{
+    border: none;
+    background-color: transparent;
+    text-decoration: underline;
+    color:#797a7c;
+}
+
+.Bregistro:hover{
+    color: rgb(118, 118, 255);
+}
+
+.Blogin{
+    height: 29px;
+    width: 105px;
+    border-radius: 5px;
+    border: #8e9094 solid 1px;
+    transition: width 0.5s ease,transform 0.3s ease;
+
+}
+
+.Blogin:hover{
+    width: 115px;
+    background-color: #c1c3c9;
+    transform: translate(0px, 3px);
 }

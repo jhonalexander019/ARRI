@@ -1,16 +1,19 @@
 import React from "react";
-import styles from "../styles/Sign.module.css"
+import styles from "../styles/Sign.module.css";
 
-export default function SignUp({ handleCambiarVista }){
-    return(
-        <div className={styles.form}>
-            <p>REGISTRO</p>
-            <input type="text" placeholder="Correo"/>
-            <input type="password" placeholder="Contraseña"/>
-            <button onClick={() => handleCambiarVista("/Sign")}>
-            Ir a la vista /Sign
-          </button>
-            <button>Iniciar Sesion</button>
-        </div>
-    );
+export default function SignUp({ handleCambiarVista }) {
+  return (
+    <form action="">
+      <div className={styles.form}>
+        <h1>REGISTRO</h1>
+        <input type="email" placeholder="Correo" />
+        <input type="password" placeholder="Contraseña" />
+        <input type="password" placeholder="Contraseña" />
+        <button className={styles.Bregistro} clasnClick={() => handleCambiarVista("/Sign")}>
+          Ya tengo una Cuenta!
+        </button>
+        <button className={styles.Blogin}>Registrarme</button>
+      </div>
+    </form>
+  );
 }

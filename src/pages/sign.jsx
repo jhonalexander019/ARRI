@@ -13,19 +13,22 @@ export function Sign() {
   };
 
   return (
+    
     <div className={styles.contenedor}>
+
       <div className={styles.card}>
-        <div>
-          {rutaActual === "/Sign" ? (
-            <div>
-              <SignIn handleCambiarVista={handleCambiarVista} />
-            </div>
-          ) : (
-            <img src={Candado} alt="" />
-          )}
+        <div className={`${styles.fade} ${styles.fadeEnter}`}>
+          
+            {rutaActual === "/Sign" ? (
+              <div>
+                <SignIn handleCambiarVista={handleCambiarVista} />
+              </div>
+            ) : (
+              <img src={Candado} alt="" />
+            )}
         </div>
 
-        <div>
+        <div className={`${styles.fade} ${styles.fadeEnter}`}>
           {rutaActual === "/SignUp" ? (
             <div>
               <SignUp handleCambiarVista={handleCambiarVista} />
