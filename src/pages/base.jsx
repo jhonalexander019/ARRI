@@ -7,7 +7,7 @@ import { Rutas } from "../route";
 function Base() {
   const location = useLocation();
 
-  const mostrarFooter = !location.pathname.includes("/Sign");
+  const mostrarFooter = location.pathname === "/sign";
 
   return (
     <div className={styles.principal}>
@@ -22,7 +22,7 @@ function Base() {
         <Rutas />
       </body>
 
-      {mostrarFooter && (
+      {!mostrarFooter && (
         <footer>
           <Footer />
         </footer>

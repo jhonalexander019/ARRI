@@ -3,14 +3,14 @@
     height: 7vh;
     justify-content: space-evenly;
     align-items: center;
-    background-color: #f4eade;
+    /* background-color: #f4eade; */
     margin-top: 3%;
-    /* box-shadow: rgba(0, 0, 0, 0.15) 3.6px 3.6px 5.6px 3.6px; */
-      background: linear-gradient(0deg, rgba(0, 101, 184, 0.611) 0%, rgb(202, 253, 253)  80%);
+    box-shadow: rgba(0, 0, 0, 0.15) 3.6px 3.6px 5.6px 3.6px;
+      /* background: linear-gradient(0deg, rgba(0, 101, 184, 0.611) 0%, rgb(202, 253, 253)  80%); */
 
 }
 
-img{
+p > img{
     max-width: 20px;
     max-height: 20px;
     object-fit: cover;

@@ -1,6 +1,6 @@
 .contenedor{
     display: flex;
-    height: 91.5vh;
+    height: 78vh;
     justify-content: center;
     align-items: center;
     flex-direction: column;
@@ -10,19 +10,18 @@
     height: 380px;
     width: 900px;
     /* background-color: #565c66; */
-    background-color: rgba(150, 208, 255, 0.611);
+    background-color: rgba(208, 234, 255, 0.611);
     box-shadow: 0px 0px 25px 11px rgba(0,0,0,0.1);
-        display: grid;
+    display: grid;
     grid-template-columns: repeat(2, 1fr);
     align-items: center;
     justify-items: center;
-    top: -15px;
 }
 
 .form{
     height: 460px;
     width: 350px;
-    background-color: #d9edfd;
+    background-color: #e9f4fd;
     top: -40px;
     position: relative;
     border: #d5e2f8 solid 2px;
@@ -34,7 +33,15 @@
     gap: 30px;
 }
 
-.form > input{
+form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.form input{
     width: 250px;
     height: 30px;
     padding: 0 5px;
@@ -43,14 +50,22 @@
     border: 0;
 }
 
-.form > input:focus-visible{
+.form input:focus-visible{
     border: #9da0a7 solid 1px;
     outline-width: 0;
     box-shadow: 0px 4px 52px -8px rgba(0,0,0,0.1);
 }
 
-.form > h1{
-    font-size: 350%;
+.form h1{
+    font-size: 10vh;
+}
+
+.img{
+    object-fit: cover;
+    height: auto;
+    max-width: 90%;
+    margin-top: -15%;
+    margin-left: 5%;
 }
 
 .Bregistro{
@@ -70,7 +85,6 @@
     border-radius: 5px;
     border: #8e9094 solid 1px;
     transition: width 0.5s ease,transform 0.3s ease;
-
 }
 
 .Blogin:hover{

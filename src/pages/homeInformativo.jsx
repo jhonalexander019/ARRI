@@ -1,11 +1,18 @@
 import styles from "../styles/HomeInformativo.module.css";
-import Figure from "../components/figure";
+import OP from "../img/op.png";
+import TA from "../img/ta.png";
 
 export function PaginaInformativa() {
   return (
     <div className={styles.contenedor}>
+      <h1>Analisis y Reporte de Resultados ICFES</h1>
+      <h3>
+        "La educación es el arma más poderosa que puedes usar para cambiar el
+        mundo." - Nelson Mandela
+      </h3>
+
       <div className={`${styles.infor} ${styles.left}`}>
-        <Figure text="TECNOLOGIAS AVANZADAS" />
+        <img src={TA} className={`${styles.img}`} alt="" />
         <p className={styles.textoInformativo}>
           El proyecto de Tecnologías Avanzadas se enfoca en el desarrollo de una
           página web y una aplicación móvil utilizando React y React Native,
@@ -18,7 +25,6 @@ export function PaginaInformativa() {
         </p>
       </div>
       <div className={`${styles.infor} ${styles.right}`}>
-        <Figure text="OPTIMIZACION" />
         <p className={styles.textoInformativo}>
           El proyecto de optimización, enfocado en la materia de optimización,
           se centra en utilizar la técnica ETL (Extract, Transform, Load) como
@@ -29,18 +35,8 @@ export function PaginaInformativa() {
           optimizar el rendimiento y la eficiencia del proceso, asegurando la
           calidad y confiabilidad de los datos utilizados.
         </p>
-      </div>
-      <div className={`${styles.infor} ${styles.left}`}>
-        <Figure text="SEGURIDAD DE LA INFORMACION" />
-        <p className={styles.textoInformativo}>
-          El proyecto de análisis y reporte de resultados ICFES, enfocado en la
-          materia de seguridad de la información, se basa en garantizar la
-          confidencialidad, integridad y disponibilidad de los datos sensibles.
-          Se implementan medidas de seguridad como cifrado, autenticación y
-          control de acceso para proteger la información. Además, se realizan
-          análisis de vulnerabilidades y se establecen políticas de seguridad
-          para mitigar riesgos y asegurar la protección de los datos del ICFES.
-        </p>
+        <img src={OP} className={`${styles.img}`} alt="" />
+
       </div>
     </div>
   );
