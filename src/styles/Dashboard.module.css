@@ -2,35 +2,109 @@
   display: grid;
   grid-template-columns: 250px 1fr;
   align-items: center;
-  margin: 0 1.5%;
-  gap: 2%;
+  margin: 0 1%;
+  gap: 1.5%;
 }
 
 .lista {
-  height: auto;
-  background-color: black;
-  border: 0.8px solid #80bdca;
+  background-color: rgb(27, 27, 27);
+  border: 0.8px solid #6b6d6d;
   border-radius: 10px;
   /* background-color: #b2e3ee;
      transition: box-shadow 0.3s ease, transform 0.3s ease;*/
 }
 
 .lista h3 {
+  margin-top: 5%;
   color: white !important;
+  padding-bottom: 5px;
+  border-bottom: white solid 2px;
+}
+
+.listas {
+  height: 450px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.lista ul li {
+  color: white;
+  margin: 10px 0;
 }
 
 .tabla {
-  height: auto;
-  background-color: red;
+  height: 450px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* background-color: red; */
+  gap: 5%;
 }
 
-.tabla table{
-    font-size: 2.3vh;
+.tabla table {
+  font-size: 2.3vh;
+  /* border: black solid 1px; */
+  border-radius: 15px;
+  border-collapse: collapse;
+  border: black solid 1px;
+}
+.tabla table thead,
+.tabla table tbody {
+  /* border: black solid 1px; */
+  /* border-radius: 15px; */
 }
 
-.table table thead th,tbody td {
-    max-width: 55px; /* Establece el ancho máximo de las celdas en 200px */
-    min-width: 40px;
-    word-wrap: break-word;
+.tabla table thead th,
+.tabla table tbody td {
+  max-width: 95px; /* Establece el ancho máximo de las celdas en 200px */
+  min-width: 90px;
+  height: 45px;
+  word-wrap: break-word;
+  text-align: center;
 }
-  
+
+.filt {
+  width: 100%;
+  height: 7%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.filt input {
+  width: 55%;
+  height: 100%;
+}
+
+.filt button {
+  height: 29px;
+  width: 105px;
+  border-radius: 5px;
+  border: #8e9094 solid 1px;
+  transition: width 0.5s ease, transform 0.3s ease;
+}
+
+.filt button:hover {
+  width: 110px;
+  background-color: #c1c3c9;
+}
+
+.MuiCircularProgress-indeterminate {
+  animation: circular-rotate 1.4s linear infinite;
+}
+
+@keyframes circular-rotate {
+  0% {
+    transform: rotate(0deg);
+    /* Fix IE11 wobbly */
+    transform-origin: 50% 50%;
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

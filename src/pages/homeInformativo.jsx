@@ -3,6 +3,9 @@ import OP from "../img/op.png";
 import TA from "../img/ta.png";
 
 export function PaginaInformativa() {
+  const token = localStorage.getItem("token");
+
+  console.log(token);
   return (
     <div className={styles.contenedor}>
       <h1>Analisis y Reporte de Resultados ICFES</h1>
@@ -36,7 +39,6 @@ export function PaginaInformativa() {
           calidad y confiabilidad de los datos utilizados.
         </p>
         <img src={OP} className={`${styles.img}`} alt="" />
-
       </div>
     </div>
   );

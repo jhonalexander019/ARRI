@@ -6,7 +6,10 @@ import signIn from "../img/sign_in.png";
 import signUp from "../img/sign_up.png";
 
 export function Sign() {
-  
+  const token = localStorage.getItem("token");
+
+  console.log(token);
+
   const [rutaActual, setRutaActual] = useState("/Sign"); // Cambiado el valor inicial a "/Sign"
 
   const handleCambiarVista = (vista) => {
@@ -14,17 +17,15 @@ export function Sign() {
   };
 
   return (
-    
     <div className={styles.contenedor}>
-
       <div className={styles.card}>
-            {rutaActual === "/Sign" ? (
-              <div>
-                <SignIn handleCambiarVista={handleCambiarVista} />
-              </div>
-            ) : (
-              <img src={signUp} className={`${styles.img}`} alt="" />
-            )}
+        {rutaActual === "/Sign" ? (
+          <div>
+            <SignIn handleCambiarVista={handleCambiarVista} />
+          </div>
+        ) : (
+          <img src={signUp} className={`${styles.img}`} alt="" />
+        )}
 
         <div>
           {rutaActual === "/SignUp" ? (

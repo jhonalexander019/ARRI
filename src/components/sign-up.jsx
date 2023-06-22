@@ -1,20 +1,36 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import { CircularProgress } from "@mui/material";
 import styles from "../styles/Sign.module.css";
+import Modales from "./Modales";
 
 export default function SignUp({ handleCambiarVista }) {
   const [nombre, setNombre] = useState("");
   const [correo, setCorreo] = useState("");
   const [contraseña, setContraseña] = useState("");
   const [confirmarContraseña, setConfirmarContraseña] = useState("");
+  const [loading, setLoading] = useState(false); // Estado para controlar la visibilidad del CircularProgress
   const navigate = useNavigate();
+  const [errorTitle, setErrorTitle] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+  const [openModal, setOpenModal] = useState(false);
 
+  const handleCloseModal = () => {
+    setOpenModal(false);
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    try {
-      if (contraseña === confirmarContraseña) {
+    if (contraseña !== confirmarContraseña) {
+      setOpenModal(true);
+      setErrorTitle("Contraseñas Incorrectas!!");
+      setErrorMessage(
+        "Las contraseñas proporcionadas son incorrectas. Por favor, intenta nuevamente."
+      );
+    } else {
+      try {
+        setLoading(true); // Mostrar CircularProgress al enviar la solicitud
+
         const response = await fetch(
           "http://localhost:4000/api/arri/register",
           {
@@ -23,26 +39,31 @@ export default function SignUp({ handleCambiarVista }) {
               Accept: "application/json",
               "Content-Type": "application/json",
             },
-
             body: JSON.stringify({ nombre, correo, contraseña }),
           }
         );
 
         const data = await response.json();
-        console.log(data);
         if (data.token) {
           // Almacenar el token en el localStorage
           const token = data.token;
           localStorage.setItem("token", token);
-          navigate("/Dashboard/CargueDatos", { replace: true });
+          navigate("/Dashboard", { replace: true });
         } else {
-          console.log("Error correo ya existe");
+          setOpenModal(true);
+          setErrorTitle("Correo existente!!");
+          setErrorMessage(
+            "El correo proporcionado ya está en uso. Por favor, intenta nuevamente."
+          );
         }
-      } else {
-        console.log("Error contraseñas no coinciden");
+      } catch (error) {
+        console.log(error);
+        setOpenModal(true);
+        setErrorTitle("Error en la solicitud!!");
+        setErrorMessage("Por favor, intenta nuevamente.");
+      } finally {
+        setLoading(false); // Ocultar CircularProgress después de recibir la respuesta
       }
-    } catch (error) {
-      console.log("Error en la solicitud:", error);
     }
   };
 
@@ -91,9 +112,19 @@ export default function SignUp({ handleCambiarVista }) {
           onChange={(e) => setConfirmarContraseña(e.target.value)}
         />
 
-        <button className={styles.Blogin} type="submit">
-          Registrarme
-        </button>
+        {loading ? (
+          <div className={styles.circularProgressContainer}>
+            <CircularProgress
+              color="inherit" // Establecer el color del CircularProgress en negro
+              size={24} // Tamaño del CircularProgress
+              thickness={4} // Grosor del CircularProgress
+            />
+          </div>
+        ) : (
+          <button className={styles.Blogin} type="submit">
+            Registrarme
+          </button>
+        )}
       </form>
       <button
         className={styles.Bregistro}
@@ -101,6 +132,13 @@ export default function SignUp({ handleCambiarVista }) {
       >
         Ya tengo una Cuenta!
       </button>
+
+      <Modales
+        openModal={openModal}
+        handleCloseModal={handleCloseModal}
+        errorTitle={errorTitle}
+        errorMessage={errorMessage}
+      />
     </div>
   );
 }
