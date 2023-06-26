@@ -8,21 +8,18 @@ import logo from "../img/logo.png";
 function Base() {
   const location = useLocation();
 
-  const mostrarFooter = location.pathname === "/sign";
+  const mostrarFooter = location.pathname === "/sign" || location.pathname.includes("/Dashboard");
 
   return (
     <div className={styles.principal}>
-      <div className={styles.fondo}>
-        <div className={styles.forma}></div>
-      </div>
       <header>
         <img src={logo} alt="" />
         <NavBar />
       </header>
 
-      <body>
+      <div>
         <Rutas />
-      </body>
+      </div>
 
       {!mostrarFooter && (
         <footer>

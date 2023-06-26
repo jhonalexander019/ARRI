@@ -2,7 +2,6 @@
   margin: 0;
   padding: 0;
   font-family: "Blogger Sans", sans-serif;
-  color: rgb(12, 12, 51);
 }
 
 @font-face {
@@ -29,8 +28,11 @@ header img {
   width: 130px;
   object-fit: cover;
 }
+
 .principal {
   background-color: rgb(255, 255, 255);
+  color: rgb(12, 12, 51);
+
 }
 
 .contenedor {

@@ -3,8 +3,14 @@ import { Link, useLocation } from "react-router-dom";
 import style from "../styles/Menu.module.css";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
-import Button from "@mui/material/Button";
-import { Margin } from "@mui/icons-material";
+import { IconButton } from "@mui/material";
+import HomeIcon from "@mui/icons-material/Home";
+import LoginIcon from "@mui/icons-material/Login";
+import DataIcon from "@mui/icons-material/DataUsage";
+import StatisticsIcon from "@mui/icons-material/BarChart";
+import ReportIcon from "@mui/icons-material/Description";
+import SettingsIcon from "@mui/icons-material/Settings";
+import LogoutIcon from "@mui/icons-material/Logout";
 
 export function NavBar() {
   const location = useLocation();
@@ -12,8 +18,9 @@ export function NavBar() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
   const handleLogout = () => {
-    // Eliminar el token almacenado en localStorage
+    // Eliminar el token y nombre almacenado en localStorage
     localStorage.removeItem("token");
+    localStorage.removeItem("nombre");
   };
 
   const handleMenuOpen = (event) => {
@@ -48,6 +55,9 @@ export function NavBar() {
         {!isHomeInPage && !isDashboardPage && (
           <li>
             <Link to="/" replace>
+              <IconButton color="inherit">
+                <HomeIcon />
+              </IconButton>
               Inicio
             </Link>
           </li>
@@ -55,6 +65,9 @@ export function NavBar() {
         {!isSignInPage && !isDashboardPage && (
           <li>
             <Link to="/sign" replace>
+              <IconButton color="inherit">
+                <LoginIcon />
+              </IconButton>
               Iniciar Sesión
             </Link>
           </li>
@@ -63,16 +76,25 @@ export function NavBar() {
           <>
             <li>
               <Link to="/Dashboard/CargueDatos" replace>
+                <IconButton color="inherit">
+                  <DataIcon />
+                </IconButton>
                 Datos
               </Link>
             </li>
             <li>
               <Link to="/Dashboard/Estadisticas" replace>
-                Estadisticas
+                <IconButton color="inherit">
+                  <StatisticsIcon />
+                </IconButton>
+                Estadísticas
               </Link>
             </li>
             <li>
               <Link to="/Dashboard/Reporte" replace>
+                <IconButton color="inherit">
+                  <ReportIcon />
+                </IconButton>
                 Reporte
               </Link>
             </li>
@@ -83,33 +105,33 @@ export function NavBar() {
               className={style.menuLink}
             >
               {nombre}
-              {isMenuOpen && (
-                <Menu
-                  anchorEl={anchorEl}
-                  open={isMenuOpen}
-                  onClose={handleMenuClose}
-                  anchorOrigin={{
-                    vertical: "bottom",
-                    horizontal: "center",
-                  }}
-                  transformOrigin={{
-                    vertical: "top",
-                    horizontal: "center",
-                  }}
-                  getContentAnchorEl={null}
-                  disableAutoFocusItem // Deshabilita el enfoque automático
-                  sx={{
-                    borderRadius: "8px", // Ajusta este valor según tus necesidades
-                  }}
-                >
-                  <MenuItem component={Link} to="/configuracion">
-                    Configuración
-                  </MenuItem>
-                  <MenuItem component={Link} to="/sign" onClick={handleLogout}>
-                    Cerrar Sesión
-                  </MenuItem>
-                </Menu>
-              )}
+              <Menu
+                anchorEl={anchorEl}
+                open={isMenuOpen}
+                onClose={handleMenuClose}
+                anchorOrigin={{
+                  vertical: "bottom",
+                  horizontal: "center",
+                }}
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "center",
+                }}
+                getcontentanchorel={null}
+                disableAutoFocusItem // Deshabilita el enfoque automático
+                sx={{
+                  borderRadius: "8px", // Ajusta este valor según tus necesidades
+                }}
+              >
+                <MenuItem component={Link} to="/configuracion">
+                  <SettingsIcon />
+                  Configuración
+                </MenuItem>
+                <MenuItem component={Link} to="/sign" onClick={handleLogout}>
+                  <LogoutIcon />
+                  Cerrar Sesión
+                </MenuItem>
+              </Menu>
             </li>
           </>
         )}

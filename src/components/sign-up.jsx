@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { CircularProgress } from "@mui/material";
 import styles from "../styles/Sign.module.css";
 import Modales from "./Modales";
+import ServerRequest from "./api";
 
 export default function SignUp({ handleCambiarVista }) {
   const [nombre, setNombre] = useState("");
@@ -14,6 +15,7 @@ export default function SignUp({ handleCambiarVista }) {
   const [errorTitle, setErrorTitle] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [openModal, setOpenModal] = useState(false);
+  const serverRequest = new ServerRequest();
 
   const handleCloseModal = () => {
     setOpenModal(false);
@@ -31,23 +33,16 @@ export default function SignUp({ handleCambiarVista }) {
       try {
         setLoading(true); // Mostrar CircularProgress al enviar la solicitud
 
-        const response = await fetch(
-          "http://localhost:4000/api/arri/register",
-          {
-            method: "POST",
-            headers: {
-              Accept: "application/json",
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ nombre, correo, contraseña }),
-          }
-        );
+        const data = await serverRequest.register(nombre, correo, contraseña);
 
-        const data = await response.json();
         if (data.token) {
           // Almacenar el token en el localStorage
           const token = data.token;
+          const nombre = data.nombre;
+
           localStorage.setItem("token", token);
+          localStorage.setItem("nombre", nombre);
+
           navigate("/Dashboard", { replace: true });
         } else {
           setOpenModal(true);
@@ -57,10 +52,9 @@ export default function SignUp({ handleCambiarVista }) {
           );
         }
       } catch (error) {
-        console.log(error);
         setOpenModal(true);
-        setErrorTitle("Error en la solicitud!!");
-        setErrorMessage("Por favor, intenta nuevamente.");
+        setErrorTitle("Error al registrarse!!");
+        setErrorMessage("Verifique su conexion a internet e intente nuevamente.");
       } finally {
         setLoading(false); // Ocultar CircularProgress después de recibir la respuesta
       }
@@ -115,7 +109,6 @@ export default function SignUp({ handleCambiarVista }) {
         {loading ? (
           <div className={styles.circularProgressContainer}>
             <CircularProgress
-              color="inherit" // Establecer el color del CircularProgress en negro
               size={24} // Tamaño del CircularProgress
               thickness={4} // Grosor del CircularProgress
             />

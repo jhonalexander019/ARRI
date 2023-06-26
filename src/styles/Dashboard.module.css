@@ -1,6 +1,6 @@
 .contenedor {
   display: grid;
-  grid-template-columns: 250px 1fr;
+  grid-template-columns: 0.25fr 1fr;
   align-items: center;
   margin: 0 1%;
   gap: 1.5%;
@@ -10,8 +10,6 @@
   background-color: rgb(27, 27, 27);
   border: 0.8px solid #6b6d6d;
   border-radius: 10px;
-  /* background-color: #b2e3ee;
-     transition: box-shadow 0.3s ease, transform 0.3s ease;*/
 }
 
 .lista h3 {
@@ -28,41 +26,38 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding-left: 8%;
 }
 
 .lista ul li {
   color: white;
   margin: 10px 0;
+  font-size: smaller;
 }
 
-.tabla {
-  height: 450px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  /* background-color: red; */
-  gap: 5%;
+.vista {
+  max-height: 600px;
+  overflow: auto;
+  position: static;
 }
 
-.tabla table {
+.vista table {
   font-size: 2.3vh;
-  /* border: black solid 1px; */
   border-radius: 15px;
   border-collapse: collapse;
   border: black solid 1px;
+
 }
-.tabla table thead,
-.tabla table tbody {
-  /* border: black solid 1px; */
-  /* border-radius: 15px; */
+.vista table thead,
+.vista table tbody {
+  border: black solid 1px; 
 }
 
-.tabla table thead th,
-.tabla table tbody td {
-  max-width: 95px; /* Establece el ancho máximo de las celdas en 200px */
-  min-width: 90px;
+.vista table thead th,
+.vista table tbody td {
+  width: 115px;
   height: 45px;
+  padding: 1px;
   word-wrap: break-word;
   text-align: center;
 }
@@ -74,6 +69,7 @@
   align-items: center;
   justify-content: center;
   gap: 5px;
+  margin-bottom: 2%;
 }
 
 .filt input {
@@ -82,16 +78,19 @@
 }
 
 .filt button {
-  height: 29px;
+  height: 50px;
   width: 105px;
   border-radius: 5px;
   border: #8e9094 solid 1px;
   transition: width 0.5s ease, transform 0.3s ease;
+  color: #cfd2db;
+  background-color: #232324;
+font-size: 2.4vh;
 }
 
 .filt button:hover {
   width: 110px;
-  background-color: #c1c3c9;
+  background-color: #2c2c2e;
 }
 
 .MuiCircularProgress-indeterminate {
@@ -101,7 +100,6 @@
 @keyframes circular-rotate {
   0% {
     transform: rotate(0deg);
-    /* Fix IE11 wobbly */
     transform-origin: 50% 50%;
   }
   100% {

@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { CircularProgress } from "@mui/material";
 import styles from "../styles/Sign.module.css";
 import Modales from "./Modales";
+import ServerRequest from "./api";
 
 export default function SignIn({ handleCambiarVista }) {
   const [correo, setCorreo] = useState("");
@@ -12,6 +13,7 @@ export default function SignIn({ handleCambiarVista }) {
   const [errorTitle, setErrorTitle] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [openModal, setOpenModal] = useState(false);
+  const serverRequest = new ServerRequest();
 
   const handleCloseModal = () => {
     setOpenModal(false);
@@ -23,16 +25,7 @@ export default function SignIn({ handleCambiarVista }) {
     try {
       setLoading(true); // Mostrar CircularProgress al enviar la solicitud
 
-      const response = await fetch("http://localhost:4000/api/arri/login", {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ correo, contraseña }),
-      });
-      const data = await response.json();
-      console.log(data.nombre, data.token);
+      const data = await serverRequest.login(correo, contraseña);
 
       if (data.token) {
         // Almacenar el token en el localStorage
@@ -50,8 +43,8 @@ export default function SignIn({ handleCambiarVista }) {
       }
     } catch (error) {
       setOpenModal(true);
-      setErrorTitle("Error en la solicitud!!");
-      setErrorMessage("Por favor, intenta nuevamente.");
+      setErrorTitle("Error al iniciar sesion!!");
+      setErrorMessage("Verifique su conexion a internet e intente nuevamente.");
     } finally {
       setLoading(false); // Ocultar CircularProgress después de recibir la respuesta
     }
@@ -83,11 +76,7 @@ export default function SignIn({ handleCambiarVista }) {
 
         {loading ? (
           <div className={styles.circularProgressContainer}>
-            <CircularProgress
-              color="inherit" // Establecer el color del CircularProgress en negro
-              size={24} // Tamaño del CircularProgress
-              thickness={4} // Grosor del CircularProgress
-            />
+            <CircularProgress size={24} thickness={4} />
           </div>
         ) : (
           <button className={styles.Blogin} type="submit">
