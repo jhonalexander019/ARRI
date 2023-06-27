@@ -1,6 +1,6 @@
 .menuLista {
   display: flex;
-  width: 650px;
+  width: auto;
   justify-content: flex-end;
   list-style: none;
   align-items: center;

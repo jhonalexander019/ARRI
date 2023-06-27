@@ -50,7 +50,7 @@ export function NavBar() {
   }, [location.pathname]);
 
   return (
-    <div>
+    <div style={{ width: '85%' }}>
       <ul className={style.menuLista} data-animation="center">
         {!isHomeInPage && !isDashboardPage && (
           <li>
