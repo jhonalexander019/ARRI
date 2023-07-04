@@ -77,6 +77,45 @@ class ServerRequest {
       throw error;
     }
   }
+
+  async instiUser() {
+    try {
+      const response = await fetch("http://localhost:4000/api/arri/instiUser", {
+        method: "POST",
+        headers: {
+          "x-access-token": localStorage.getItem("token"),
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      });
+
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error("Error en la solicitud de carga:", error);
+      throw error;
+    }
+  }
+
+  async estadisticas(institucion) {
+    try {
+      const response = await fetch("http://localhost:4000/api/arri/estadisticas", {
+        method: "POST",
+        headers: {
+          "x-access-token": localStorage.getItem("token"),
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ institucion: institucion.selectedItemData.label }),
+      });
+
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error("Error en la solicitud de carga:", error);
+      throw error;
+    }
+  }
 }
 
 export default ServerRequest;

@@ -3,6 +3,7 @@ import { PaginaInformativa } from "./pages/homeInformativo";
 import { Sign } from "./pages/sign";
 import { Dashboard } from "./pages/dashboard";
 import { Datos } from "./components/datos";
+import  { Estadisticas } from "./components/estadisticas";
 
 function RutaProtegida({ children }) {
   const token = localStorage.getItem("token");
@@ -48,7 +49,7 @@ export function RutasDashboard(props) {
         path="/Estadisticas"
         element={
           <RutaProtegida>
-            <Dashboard />
+            <Estadisticas selectedItemData={selectedItemData}/>
           </RutaProtegida>
         }
       />

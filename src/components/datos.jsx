@@ -34,7 +34,6 @@ export function Datos(selectedItemData) {
   const lastIndex = currentPage * itemsPerPage;
   const firstIndex = lastIndex - itemsPerPage;
   const totalPages = Math.ceil(jsonData.length / itemsPerPage);
-  const [selectedOptionsList, setSelectedOptionsList] = useState([]);
 
   const fetchOptions = async () => {
     try {
@@ -53,53 +52,33 @@ export function Datos(selectedItemData) {
   const handleLoadData = async () => {
     try {
       setLoading(true);
-
+  
       if (lastSelectedOption && selectedOption) {
         const data = await serverRequest.load(selectedOption);
         setJsonData(data);
+        localStorage.setItem('selectedOption', "cambio"); // Guardar en el localStorage
         setLoading(false);
       } else {
         setOpenModal(true);
-        setErrorTitle("Error al traer la informacion!!");
-        setErrorMessage("Por favor seleccione una entidad academica.");
+        setErrorTitle("Error al traer la información!!");
+        setErrorMessage("Por favor seleccione una entidad académica.");
         setLoading(false);
       }
     } catch (error) {
       setOpenModal(true);
-      setErrorTitle("Error al traer la informacion!!");
-      setErrorMessage("Verifique su conexion a internet e intente nuevamente.");
+      setErrorTitle("Error al traer la información!!");
+      setErrorMessage("Verifique su conexión a internet e intente nuevamente.");
     }
   };
+  
 
   useEffect(() => {
     fetchOptions();
   }, []);
 
-  useEffect(() => {
-    const storedOptionsList = JSON.parse(
-      localStorage.getItem("selectedOptionsList")
-    );
-    if (storedOptionsList) {
-      setSelectedOptionsList(storedOptionsList);
-    }
-  }, []);
-
   const handleOptionChange = (event, value) => {
     setLastSelectedOption(value);
     setSelectedOption(value);
-
-    if (
-      !selectedOptionsList.find(
-        (selectedOption) => selectedOption.label === value.label
-      )
-    ) {
-      const updatedOptionsList = [...selectedOptionsList, value];
-      setSelectedOptionsList(updatedOptionsList);
-      localStorage.setItem(
-        "selectedOptionsList",
-        JSON.stringify(updatedOptionsList)
-      );
-    }
   };
 
   const handleCloseModal = () => {
@@ -160,7 +139,7 @@ export function Datos(selectedItemData) {
             </TableHead>
             <TableBody>
               {jsonData.slice(firstIndex, lastIndex).map((dataItem) => (
-                <TableRow key={dataItem.id}>
+                <TableRow key={dataItem.codigo}>
                   <TableCell>{dataItem.periodo || " -- "} </TableCell>
                   <TableCell>{dataItem.estu_genero || " -- "}</TableCell>
                   <TableCell>{dataItem.desemp_ingles || " -- "}</TableCell>

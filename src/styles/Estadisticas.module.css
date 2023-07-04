@@ -1,0 +1,20 @@
+.contenedor {
+  max-height: 600px;
+  overflow: auto;
+  position: static;
+  margin-top: 3%;
+}
+
+.estadisticas {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Dos columnas de igual ancho */
+  gap: 20px; /* Espacio entre las columnas */
+  justify-items: center;
+}
+
+
+.estadisticas > div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

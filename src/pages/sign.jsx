@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import styles from "../styles/Sign.module.css";
 import SignIn from "../components/sign-in";
 import SignUp from "../components/sign-up";
+import ForgetPassword from "../components/forgetPassword";
 import signIn from "../img/sign_in.png";
 import signUp from "../img/sign_up.png";
 
 export function Sign() {
-
   const [rutaActual, setRutaActual] = useState("/Sign"); // Cambiado el valor inicial a "/Sign"
 
   const handleCambiarVista = (vista) => {
@@ -19,6 +19,10 @@ export function Sign() {
         {rutaActual === "/Sign" ? (
           <div>
             <SignIn handleCambiarVista={handleCambiarVista} />
+          </div>
+        ) : rutaActual === "/forgetPassword" ? (
+          <div>
+            <ForgetPassword handleCambiarVista={handleCambiarVista} />
           </div>
         ) : (
           <img src={signUp} className={`${styles.img}`} alt="" />

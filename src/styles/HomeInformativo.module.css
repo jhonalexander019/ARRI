@@ -41,8 +41,8 @@ header img {
   gap: 2%;
 }
 
-.contenedor > h1 {
-  font-size: 8vh;
+.contenedor > .informa > h1 {
+  font-size: 10vh;
 }
 .contenedor > h3 {
   font-size: 4vh;
@@ -52,7 +52,6 @@ header img {
 h1,
 h3 {
   text-align: center;
-  margin: 2% 0;
 }
 
 .infor {
@@ -62,22 +61,20 @@ h3 {
   grid-template-columns: repeat(2, 1fr);
   text-align: justify;
   align-items: center;
-  /* border: 0.8px solid #80bdca;
-  border-radius: 35px; */
-  /* background-color: #b2e3ee; */
-  /* transition: box-shadow 0.3s ease, transform 0.3s ease; */
-  margin: 5% 0;
 }
 
-/* .infor:hover {
-  box-shadow: inset 0px 10px 15px -3px rgba(0, 0, 0, 0.2),
-    inset 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
-  transform: translate(3px, 3px);
-} */
+.informa {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  text-align: justify;
+  align-items: center;
+  flex-direction: column;
+}
 
 .textoInformativo {
   text-align: justify;
-  padding: 6%;
+  padding: 2%;
   margin: 0%;
   font-size: 3vh;
 }

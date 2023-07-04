@@ -1,16 +1,35 @@
 import styles from "../styles/HomeInformativo.module.css";
 import OP from "../img/op.png";
 import TA from "../img/ta.png";
+import GAL from "../img/op1.png";
+
 
 export function PaginaInformativa() {
-
   return (
     <div className={styles.contenedor}>
+      <div className={`${styles.informa}`}>
       <h1>Analisis y Reporte de Resultados ICFES</h1>
       <h3>
-        "La educación es el arma más poderosa que puedes usar para cambiar el
-        mundo." - Nelson Mandela
+        "El conocimiento es poder. Pero la información es liberadora." - Kofi
+        Annan
       </h3>
+      <img src={GAL} style={{height:"30%", width:"25%"}} alt="" />
+      <p className={styles.textoInformativo}>
+        Nuestra plataforma en línea es la solución completa para analizar y
+        generar informes de los resultados del ICFES. Utilizando técnicas
+        avanzadas de ETL y métodos de optimización, recopilamos, procesamos y
+        presentamos los datos de manera eficiente y efectiva. Nuestra plataforma
+        extrae información de diversas fuentes, la transforma para garantizar su
+        calidad y la carga en una base de datos centralizada. Luego, aplicamos
+        algoritmos estadísticos y modelos de aprendizaje automático para
+        analizar los resultados del ICFES y generar informes detallados. Nuestra
+        herramienta te permite tomar decisiones informadas y diseñar estrategias
+        efectivas de mejora en el ámbito educativo. Simplificamos el proceso
+        para que puedas entender y utilizar de manera efectiva los datos del
+        ICFES.
+      </p>
+      </div>
+      
 
       <div className={`${styles.infor} ${styles.left}`}>
         <img src={TA} className={`${styles.img}`} alt="" />

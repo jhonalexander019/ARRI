@@ -85,12 +85,21 @@ export default function SignIn({ handleCambiarVista }) {
         )}
       </form>
 
-      <button
+<div       style={{ display: "flex", justifyContent:"center", flexDirection:"column"}}>
+<button
         className={styles.Bregistro}
         onClick={() => handleCambiarVista("/SignUp")}
       >
         ¿No tienes cuenta? Registrate aquí
       </button>
+      <button
+        className={styles.Bregistro}
+        onClick={() => handleCambiarVista("/forgetPassword")}
+      >
+        Recuperar constraseña
+      </button>
+</div>
+      
 
       <Modales
         openModal={openModal}
